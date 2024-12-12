@@ -9,25 +9,27 @@ use Illuminate\Support\Facades\Hash;
 
 class EmployeeFactory extends Factory
 {
-    /**
-     * Define the model's default state.
-     *
-     * @return array
-     */
     protected $model = Employee::class;
 
     public function definition()
     {
+        static $hashedPassword;
+
+        // Hash password only once for performance
+        if (!$hashedPassword) {
+            $hashedPassword = Hash::make('P@$$w0rd');
+        }
+
         return [
             'first_name' => $this->faker->firstName,
             'last_name' => $this->faker->lastName,
             'email' => $this->faker->unique()->safeEmail,
             'phone' => $this->faker->phoneNumber,
-            'password' => Hash::make('P@$$w0rd'),
+            'password' => $hashedPassword,
             'salary' => $this->faker->numberBetween(10000, 50000),
-            'manager_id' => Employee::factory(),
-            'department_id' => Department::factory(),
-            'image' => 'https://i.pravatar.cc/150?img=' . $this->faker->numberBetween(1, 70), // Random placeholder image
+            'manager_id' => 1,
+            'department_id' => 1,
+            'image' => 'https://i.pravatar.cc/150?img=' . $this->faker->numberBetween(1, 70),
         ];
     }
 }

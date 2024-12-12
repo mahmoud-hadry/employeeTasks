@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ChatController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EmployeeController;
@@ -18,7 +19,7 @@ use App\Http\Controllers\TaskController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 Route::get('/dashboard', function () {
@@ -33,6 +34,12 @@ Route::middleware('auth')->group(function () {
     Route::resource('departments', DepartmentController::class);
     Route::resource('tasks', TaskController::class);
     Route::get('/myEmployeeTasks', [TaskController::class, 'myEmployeeTasks'])->name('myEmployeeTasks');
+
+    Route::get('/chat/{user}', [ChatController::class, 'show'])->name('chat');
+
+    Route::get('/messages/{user}', [ChatController::class, 'getMessages']);
+    Route::post('/messages/{user}', [ChatController::class, 'sendMessage']);
+
 
 });
 Route::post('employeeLogin', [EmployeeController::class, 'login'])->name('employeeLogin');

@@ -4,7 +4,7 @@
     <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
         <section>
             <x-primary-button>
-            <a href="{{ route('tasks.create') }}" class="bg-blue-500 text-white px-4 py-2 rounded">New Task</a>
+            <a href="{{ route('tasks.create') }}">New Task</a>
         </x-primary-button>
         <table class="table-auto w-full mt-4" id="tasks-table">
             <thead>

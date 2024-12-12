@@ -3,7 +3,7 @@
 @section('content')
     <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
         <section>
-        <x-primary-button><a href="{{ route('departments.create') }}" class="bg-blue-500 text-white px-4 py-2 rounded">Add Department</a></x-primary-button>
+        <x-primary-button><a href="{{ route('departments.create') }}">Add Department</a></x-primary-button>
                 <table class="table-auto w-full mt-4" id="departments-table">
             <thead>
             <tr>

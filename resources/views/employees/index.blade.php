@@ -3,7 +3,7 @@
 @section('content')
     <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
         <section>
-        <x-primary-button><a href="{{ route('employees.create') }}" class="bg-blue-500 text-white px-4 py-2 rounded" >Add Employee</a></x-primary-button>
+        <x-primary-button><a href="{{ route('employees.create') }}">Add Employee</a></x-primary-button>
             <table id="employee-table">
             <thead>
             <tr>
@@ -32,7 +32,8 @@
                     <td>@if(isset($employee->manager)) {{ $employee->manager->first_name }} {{ $employee->manager->last_name }}@else NON @endif</td>
                     <td>{{ $employee->department->name }}</td>
                     <td>
-                        <a href="{{ route('employees.edit', $employee) }}"><button class=" text-black px-4 py-2 rounded">Edit</button>
+                        <button class="ml-2 bg-blue-500 text-white px-4 py-2 rounded-lg shadow-md hover:bg-blue-600 focus:ring-2 focus:ring-blue-400"><a href="{{ route('chat', $employee->id)}}">Chat</a></button>
+                        <x-primary-button><a href="{{ route('employees.edit', $employee) }}">Edit</a></x-primary-button>
                         </a>
                         <form action="{{ route('employees.destroy', $employee) }}" method="POST" style="display:inline;">
                             @csrf

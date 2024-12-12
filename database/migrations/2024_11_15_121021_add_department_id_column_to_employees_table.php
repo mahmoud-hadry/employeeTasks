@@ -14,7 +14,7 @@ class AddDepartmentIdColumnToEmployeesTable extends Migration
     public function up()
     {
         Schema::table('employees', function (Blueprint $table) {
-            $table->unsignedBigInteger('department_id')->after('manager_id');
+            $table->unsignedBigInteger('department_id')->nullable()->after('manager_id');
             $table->foreign('department_id')->references('id')->on('departments')->onDelete('cascade');
 
         });
